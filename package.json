@@ -36,6 +36,7 @@
       "dist/",
       "node_modules/",
       "window1/index.html",
+      "window2/index.html",
       "main.prod.js",
       "main.prod.js.map",
       "package.json"
