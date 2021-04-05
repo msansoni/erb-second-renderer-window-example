@@ -46,6 +46,11 @@ export default merge(baseConfig, {
       'core-js',
       'regenerator-runtime/runtime',
       require.resolve('../../src/window1/index.tsx'),
+    ],
+    window2: [
+      'core-js',
+      'regenerator-runtime/runtime',
+      require.resolve('../../src/window2/index.tsx'),
     ]
   },
 

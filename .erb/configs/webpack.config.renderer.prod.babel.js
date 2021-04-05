@@ -33,6 +33,11 @@ export default merge(baseConfig, {
       'regenerator-runtime/runtime',
       path.join(__dirname, '../../src/window1/index.tsx'),
     ],
+    window2: [
+      'core-js',
+      'regenerator-runtime/runtime',
+      path.join(__dirname, '../../src/window2/index.tsx'),
+    ]
   },
 
   output: {
