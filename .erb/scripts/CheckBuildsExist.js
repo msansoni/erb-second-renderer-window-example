@@ -4,9 +4,7 @@ import chalk from 'chalk';
 import fs from 'fs';
 
 const mainPath = path.join(__dirname, '../../src/main.prod.js');
-const rendererPath = path.join(
-  __dirname, '../../src/dist/renderer.prod.js'
-);
+const window1RendererPath = getRendererPath('window1');
 
 if (!fs.existsSync(mainPath)) {
   throw new Error(
@@ -16,10 +14,21 @@ if (!fs.existsSync(mainPath)) {
   );
 }
 
-if (!fs.existsSync(rendererPath)) {
+if (!fs.existsSync(window1RendererPath)) {
   throw new Error(
     chalk.whiteBright.bgRed.bold(
-      'The renderer process is not built yet. Build it by running "yarn build:renderer"'
+      'The window1 renderer process is not built yet. Build it by running "yarn build:renderer"'
     )
+  );
+}
+
+function getRendererPath(name: string) {
+  return path.join(
+    __dirname,
+    '..',
+    '..',
+    'src',
+    'dist',
+    `${name}.renderer.prod.js`
   );
 }
