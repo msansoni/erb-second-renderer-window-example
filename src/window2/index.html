@@ -27,9 +27,9 @@
 
         // Dynamically insert the bundled app script in the renderer process
         const port = process.env.PORT || 1212;
-        scripts.push(`http://localhost:${port}/dist/window1.renderer.dev.js`);
+        scripts.push(`http://localhost:${port}/dist/window2.renderer.dev.js`);
       } else {
-        scripts.push('../dist/window1.renderer.prod.js');
+        scripts.push('../dist/window2.renderer.prod.js');
       }
 
       if (scripts.length) {
