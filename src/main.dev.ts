@@ -24,7 +24,7 @@ export default class AppUpdater {
   }
 }
 
-let mainWindow: BrowserWindow | null = null;
+let window1: BrowserWindow | null = null;
 
 if (process.env.NODE_ENV === 'production') {
   const sourceMapSupport = require('source-map-support');
@@ -67,7 +67,7 @@ const createWindow = async () => {
     return path.join(RESOURCES_PATH, ...paths);
   };
 
-  mainWindow = new BrowserWindow({
+  window1 = new BrowserWindow({
     show: false,
     width: 1024,
     height: 728,
@@ -77,31 +77,31 @@ const createWindow = async () => {
     },
   });
 
-  mainWindow.loadURL(`file://${__dirname}/index.html`);
+  window1.loadURL(`file://${__dirname}/window1/index.html`);
 
   // @TODO: Use 'ready-to-show' event
   //        https://github.com/electron/electron/blob/master/docs/api/browser-window.md#using-ready-to-show-event
-  mainWindow.webContents.on('did-finish-load', () => {
-    if (!mainWindow) {
-      throw new Error('"mainWindow" is not defined');
+  window1.webContents.on('did-finish-load', () => {
+    if (!window1) {
+      throw new Error('"window1" is not defined');
     }
     if (process.env.START_MINIMIZED) {
-      mainWindow.minimize();
+      window1.minimize();
     } else {
-      mainWindow.show();
-      mainWindow.focus();
+      window1.show();
+      window1.focus();
     }
   });
 
-  mainWindow.on('closed', () => {
-    mainWindow = null;
+  window1.on('closed', () => {
+    window1 = null;
   });
 
-  const menuBuilder = new MenuBuilder(mainWindow);
+  const menuBuilder = new MenuBuilder(window1);
   menuBuilder.buildMenu();
 
   // Open urls in the user's browser
-  mainWindow.webContents.on('new-window', (event, url) => {
+  window1.webContents.on('new-window', (event, url) => {
     event.preventDefault();
     shell.openExternal(url);
   });
@@ -128,5 +128,5 @@ app.whenReady().then(createWindow).catch(console.log);
 app.on('activate', () => {
   // On macOS it's common to re-create a window in the app when the
   // dock icon is clicked and there are no other windows open.
-  if (mainWindow === null) createWindow();
+  if (window1 === null) createWindow();
 });
