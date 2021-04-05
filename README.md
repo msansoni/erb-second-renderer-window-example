@@ -9,3 +9,5 @@ The [commit history](https://github.com/msansoni/erb-second-renderer-window-exam
 Many of the details are also described in [this issue](https://github.com/electron-react-boilerplate/electron-react-boilerplate/issues/1095).
 
 Note: For this simple example tests etc have not been refactored to work with the with the new directory structure but this should be trivial.
+
+![erb-2windows](erb-second-renderer-window-example-demo.gif)
